@@ -11,11 +11,11 @@ Digidrobe is a Node.js project that allows users to upload and manage all of the
 
 ## Technologies Used
 
-Node.js is used as the backend server for Digidrobe.
-Express is a backend web application framework.
-Multer is a middleware for file uploads.
-SQLite is a database management system used to store and manage all the data.
-EJS is a templating language used to generate contextual dynamic HTML content.
+- Node.js is used as the backend server for Digidrobe.
+- Express is a backend web application framework.
+- Multer is a middleware for file uploads.
+- SQLite is a database management system used to store and manage all the data.
+- EJS is a templating language used to generate contextual dynamic HTML content.
 
 ## Installation
 
