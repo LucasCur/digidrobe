@@ -44,9 +44,7 @@ Make sure you have Node.js and npm installed on your system. If not, you can dow
    node app.js
    ```
 
-By default, the server will run on port 3000. If port 3000 is already in use, the server will automatically choose another available port.
-
-2. Open your web browser and go to `http://localhost:3000` (or the dynamically chosen port if not 3000).
+2. Open your web browser and go to `http://localhost:3000`
 3. Click on the "Upload" button to add a piece of clothing.
 4. View and manage your uploaded items on the main page.
 5. Click on the "View" button to set additional information for each item.
