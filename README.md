@@ -57,4 +57,4 @@ Contributions are more than welcome! If you have any suggestions, improvements, 
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+Digidrobe © 2024 by Lucas Curran is licensed under [CC BY-NC 4.0](LICENSE)
