@@ -1,0 +1,42 @@
+<!-- fitter.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Fitter</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Clothing Fitter</h1>
+    <div class="fitter-grid-container">
+        <% const types = ['headwear', 'top', 'bottoms', 'footwear']; %>
+        <% for(let type of types) { %>
+            <div class="fitter-grid-item">
+                <img id="<%= type %>" src="/resources/missing.png" alt="<%= type %>">
+            </div>
+        <% } %>
+    </div>
+    <button onclick="randomizeImages()">Randomize</button>
+    <a href="/">Back</a>
+
+    <script>
+        function randomizeImages() {
+            const types = ['headwear', 'top', 'bottoms', 'footwear'];
+            types.forEach(type => {
+                fetch(`/random-image/${type}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const imgElement = document.getElementById(type);
+                        if (data.imageUrl) {
+                            imgElement.src = data.imageUrl;
+                        } else {
+                            imgElement.src = "/resources/missing.png";
+                        }
+                    })
+                    .catch(error => console.error('Error fetching random image:', error));
+            });
+        }
+    </script>
+</body>
+</html>

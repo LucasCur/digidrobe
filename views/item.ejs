@@ -21,6 +21,10 @@
         <input type="text" id="brand" name="brand" value="<%= item.brand %>"><br>
         <label for="type">Type:</label>
         <select id="type" name="type" required>
+            <% if (!item.type) { %>
+                <!-- If type is not set, display "Unset" as a greyed-out option -->
+                <option disabled selected value="Unset">Unset</option>
+            <% } %>
             <option value="headwear" <%= item.type === 'headwear' ? 'selected' : '' %>>Headwear</option>
             <option value="top" <%= item.type === 'top' ? 'selected' : '' %>>Top</option>
             <option value="bottoms" <%= item.type === 'bottoms' ? 'selected' : '' %>>Bottoms</option>

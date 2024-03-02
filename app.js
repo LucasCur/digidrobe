@@ -60,6 +60,22 @@ app.get('/', (req, res) => {
     res.render('index', { items });
 });
 
+app.get('/fitter', (req, res) => {
+    res.render('fitter');
+});
+
+app.get('/random-image/:type', (req, res) => {
+    const type = req.params.type;
+    // Filter items by type and get a random item
+    const filteredItems = items.filter(item => item.type === type);
+    const randomItem = filteredItems[Math.floor(Math.random() * filteredItems.length)];
+    if (randomItem) {
+        res.json({ imageUrl: `/uploads/${randomItem.filename}` });
+    } else {
+        res.json({ imageUrl: null });
+    }
+});
+
 app.post('/upload', upload.single('image'), (req, res) => {
     const filename = req.file.filename;
     const originalname = req.file.originalname;
@@ -80,8 +96,6 @@ app.post('/upload', upload.single('image'), (req, res) => {
         });
     });
 });
-
-
 
 app.get('/delete/:id', (req, res) => {
     const id = parseInt(req.params.id);
