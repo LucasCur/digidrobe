@@ -98,8 +98,9 @@ app.get('/item/:id', (req, res) => {
     if (!item) {
         return res.status(404).send('Item not found');
     }
-    res.render('item', { itemId: id, item });
+    res.render('item', { itemId: id, item, imageUrl: `/uploads/${item.filename}` }); // Pass the image URL to the template
 });
+
 
 app.get('/', (req, res) => {
     console.log(items); // Log the items array
@@ -122,17 +123,6 @@ app.post('/set-info/:id', (req, res) => {
         item.type = type;
         res.redirect('/');
     });
-});
-
-// Start server on a random port if port 3000 is already in use
-app.on('error', (err) => {
-    if (err.code === 'EADDRINUSE') {
-        console.log(`Port ${port} is already in use. Trying another port...`);
-        port++;
-        startServer();
-    } else {
-        console.error('Server error:', err.message);
-    }
 });
 
 app.listen(port, () => {

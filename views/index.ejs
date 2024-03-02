@@ -9,9 +9,9 @@
 </head>
 <body>
     <h1>Digidrobe</h1>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="image" id="image">
-        <button type="submit">Upload</button>
+    <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" id="image" onchange="checkFile()">
+        <button type="submit" id="uploadButton" disabled>Upload</button>
     </form>
     <!-- Display uploaded items -->
     <div class="grid-container">
@@ -23,5 +23,17 @@
             </div>
         <% } %>
     </div>
+    <script>
+        function checkFile() {
+            const fileInput = document.getElementById('image');
+            const uploadButton = document.getElementById('uploadButton');
+
+            if (fileInput.files.length > 0) {
+                uploadButton.disabled = false;
+            } else {
+                uploadButton.disabled = true;
+            }
+        }
+    </script>
 </body>
 </html>
