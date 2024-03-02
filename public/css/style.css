@@ -1,0 +1,35 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.grid-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1/1; /* Square aspect ratio */
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Fit within the grid cell */
+}
+
+.view-btn, .delete-btn {
+    position: absolute;
+    bottom: 0;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.view-btn {
+    left: 0;
+    background-color: #3498db;
+}
+
+.delete-btn {
+    right: 0;
+    background-color: #e74c3c;
+}
