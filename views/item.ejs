@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Details</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Item Details</h1>
+    <!-- Form to set additional information -->
+    <form action="/set-info/<%= itemId %>" method="post">
+        <label for="brand">Brand:</label>
+        <input type="text" id="brand" name="brand" value="<%= item.brand %>" required><br>
+        <label for="type">Type:</label>
+        <select id="type" name="type" required>
+            <option value="headwear" <%= item.type === 'headwear' ? 'selected' : '' %>>Headwear</option>
+            <option value="top" <%= item.type === 'top' ? 'selected' : '' %>>Top</option>
+            <option value="bottoms" <%= item.type === 'bottoms' ? 'selected' : '' %>>Bottoms</option>
+            <option value="footwear" <%= item.type === 'footwear' ? 'selected' : '' %>>Footwear</option>
+        </select><br>
+        <button type="submit">Save</button>
+    </form>
+    <a href="/">Back</a>
+</body>
+</html>
