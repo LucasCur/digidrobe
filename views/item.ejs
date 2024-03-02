@@ -13,8 +13,12 @@
     </div>
     <!-- Form to set additional information -->
     <form action="/set-info/<%= itemId %>" method="post">
+        <label for="displayname">Name:</label>
+        <input type="text" id="displayname" name="displayname" value="<%= item.displayname %>"><br>
+        <label for="colourway">Colourway:</label>
+        <input type="text" id="colourway" name="colourway" value="<%= item.colourway %>"><br>
         <label for="brand">Brand:</label>
-        <input type="text" id="brand" name="brand" value="<%= item.brand %>" required><br>
+        <input type="text" id="brand" name="brand" value="<%= item.brand %>"><br>
         <label for="type">Type:</label>
         <select id="type" name="type" required>
             <option value="headwear" <%= item.type === 'headwear' ? 'selected' : '' %>>Headwear</option>

@@ -10,7 +10,7 @@
 <body>
     <h1>Digidrobe</h1>
     <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="image" id="image" onchange="checkFile()">
+        <input type="file" name="image" id="image" onchange="checkFile()" accept=".jpg, .jpeg, .png, .gif">
         <button type="submit" id="uploadButton" disabled>Upload</button>
     </form>
     <!-- Display uploaded items -->

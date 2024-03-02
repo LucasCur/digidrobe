@@ -15,7 +15,16 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ 
+    storage: storage,
+    fileFilter: function (req, file, cb) {
+        if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
+            return cb(new Error('Only image files are allowed!'), false);
+        }
+        cb(null, true);
+    }
+});
+
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
@@ -32,7 +41,7 @@ const db = new sqlite3.Database('digidrobe.db', (err) => {
 
 // Create table for items if it doesn't exist
 db.serialize(() => {
-    db.run("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, filename TEXT, brand TEXT, type TEXT)");
+    db.run("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, filename TEXT, displayname TEXT, colourway TEXT, brand TEXT, type TEXT)");
 });
 
 // Sample data (replace with actual data from database)
@@ -53,14 +62,14 @@ app.get('/', (req, res) => {
 
 app.post('/upload', upload.single('image'), (req, res) => {
     const filename = req.file.filename;
-    const newItem = { filename };
-    // Insert item into database
-    db.run("INSERT INTO items (filename) VALUES (?)", [filename], (err) => {
+    const originalname = req.file.originalname;
+    const displayname = originalname.substring(0, originalname.lastIndexOf('.')); // Remove file extension
+    db.run("INSERT INTO items (filename, displayname) VALUES (?, ?)", [filename, displayname], (err) => {
         if (err) {
             console.error('Error inserting item into database:', err.message);
             return res.status(500).send('Error uploading item');
         }
-        // Reload items from database
+        // Reload items from the database
         db.all("SELECT * FROM items", (err, rows) => {
             if (err) {
                 console.error('Error fetching items from database:', err.message);
@@ -71,6 +80,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
         });
     });
 });
+
 
 
 app.get('/delete/:id', (req, res) => {
@@ -109,21 +119,25 @@ app.get('/', (req, res) => {
 
 app.post('/set-info/:id', (req, res) => {
     const id = parseInt(req.params.id);
-    const { brand, type } = req.body;
+    const { brand, colourway, displayname, type } = req.body;
     const item = items.find(item => item.id === id);
     if (!item) {
         return res.status(404).send('Item not found');
     }
     // Update item in database
-    db.run("UPDATE items SET brand = ?, type = ? WHERE id = ?", [brand, type, id], (err) => {
+    db.run("UPDATE items SET brand = ?, type = ?, colourway = ?, displayname = ? WHERE id = ?", [brand, type, colourway, displayname, id], (err) => {
         if (err) {
             console.error('Error updating item in database:', err.message);
+            return res.status(500).send('Error updating item');
         }
+        item.colourway = colourway;
+        item.displayname = displayname;
         item.brand = brand;
         item.type = type;
         res.redirect('/');
     });
 });
+
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
