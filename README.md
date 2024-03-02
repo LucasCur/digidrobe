@@ -50,6 +50,9 @@ By default, the server will run on port 3000. If port 3000 is already in use, th
 3. Click on the "Upload" button to add a piece of clothing.
 4. View and manage your uploaded items on the main page.
 5. Click on the "View" button to set additional information for each item.
+6. Click on the "Delete" button to delete an item.
+7. Click on "Go to Fitter" to navigate to the outfit fitter page.
+8. Once in the fitter, you're able to generate outfits based on your items.
 
 ## Contributing
 
