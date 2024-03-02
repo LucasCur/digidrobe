@@ -15,10 +15,7 @@ Digidrobe is a Node.js project that allows users to upload and manage all of the
 [![Express](https://img.shields.io/badge/express-white?style=for-the-badge&logo=express&logoColor=white&color=%23000000)](https://expressjs.com/)
 [![Multer](https://img.shields.io/badge/multer-white?style=for-the-badge&color=CB0000)](https://www.npmjs.com/package/multer)
 [![SQLite](https://img.shields.io/badge/SQLite-white?style=for-the-badge&logo=sqlite&logoColor=white&color=%23003B57)](https://www.npmjs.com/package/sqlite3)
-[](https://ejs.co/)
-![Static Badge](https://img.shields.io/badge/EJS-white?style=for-the-badge&logo=EJS&logoColor=white&color=B4CA65)
-![Static Badge](https://img.shields.io/badge/EJS-white?style=for-the-badge&logo=EJS&logoColor=white&color=BF225A)
-
+[![EJS](https://img.shields.io/badge/EJS-white?style=for-the-badge&logo=EJS&logoColor=white&color=BF225A)](https://ejs.co/)
 
 ## Installation
 
