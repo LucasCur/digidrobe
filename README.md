@@ -19,27 +19,37 @@ EJS is a templating language used to generate contextual dynamic HTML content.
 
 ## Installation
 
+Make sure you have Node.js and npm installed on your system. If not, you can download and install them from [here](https://nodejs.org/).
+
 1. Clone the repository:
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/LucasCur/digidrobe.git
    ```
 
-2. Install dependencies:
+2. Navigate into the project directory:
+   ```bash
+   cd digidrobe
+   ```
+
+3. Install dependencies using npm: 
    ```bash
    npm install
    ```
 
-3. Start the server:
-   ```bash
-   npm start
-   ```
-
 ## Usage
 
-1. Navigate to http://localhost:3000 in your web browser.
-2. Click on the "Upload" button to add a piece of clothing.
-3. View and manage your uploaded items on the main page.
-4. Click on the "View" button to set additional information for each item.
+1. Start the server:
+
+   ```bash
+   node app.js
+   ```
+
+By default, the server will run on port 3000. If port 3000 is already in use, the server will automatically choose another available port.
+
+2. Open your web browser and go to `http://localhost:3000` (or the dynamically chosen port if not 3000).
+3. Click on the "Upload" button to add a piece of clothing.
+4. View and manage your uploaded items on the main page.
+5. Click on the "View" button to set additional information for each item.
 
 ## Contributing
 
